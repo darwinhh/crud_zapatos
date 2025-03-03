@@ -1,0 +1,87 @@
+<head>
+  {# Cargamos las librerías necesarias #} 
+  {% load bootstrap4 %}
+  {% load widget_tweaks %}
+  {% load static %}
+
+  {# CSS Bootstrap #} 
+  {% bootstrap_css %}
+
+  <style>
+    body {
+        background-color: #044040;
+        font-family: 'Arial', sans-serif;
+    }
+
+    .container {
+        max-width: 600px;
+        margin: 50px auto;
+    }
+
+    .card {
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        background:#ADD9D1 ;
+    }
+
+    .txt_negrita {
+        font-weight: bold;
+        color: black;
+    }
+
+    img {
+        max-width: 100%;
+        border-radius: 8px;
+        margin-top: 10px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    .btn-container {
+        text-align: center;
+        margin-top: 15px;
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+        border-color: #007bff;
+        padding: 10px 20px;
+        border-radius: 5px;
+        transition: 0.3s ease-in-out;
+    }
+
+    .btn-primary:hover {
+        background-color: #0056b3;
+        border-color: #0056b3;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="card">
+      <h4 class="text-center">Detalles del Zapato</h4>
+      <hr>
+
+      <p><span class="txt_negrita">Nombre:</span> <br> {{ object.nombre }}</p>
+      <p><span class="txt_negrita">Precio:</span> <br> ${{ object.precio }}</p>
+      <p><span class="txt_negrita">Talla:</span> <br> {{ object.talla }}</p>
+      <p><span class="txt_negrita">Stock:</span> <br> {{ object.stock }}</p>
+      
+      <p>
+          <span class="txt_negrita">Imagen:</span> <br>
+          <img src="{% static 'uploads/'%}{{ object.img }}" alt="{{ object.nombre }}" class="img-fluid">
+      </p>
+
+      <p><span class="txt_negrita">Creado:</span> <br> {{ object.created_at }}</p>
+      <p><span class="txt_negrita">Actualizado:</span> <br> {{ object.updated_at }}</p>
+
+      <div class="btn-container">
+        <a href="../" class="btn btn-primary">Volver</a>
+      </div>
+    </div>
+  </div>
+
+  {# JS y jQuery Bootstrap #}
+  {% bootstrap_javascript jquery='full' %}
+</body>
